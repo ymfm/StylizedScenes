@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6996383462510450773
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterFall
+  m_Shader: {fileID: -6465566751694194690, guid: 562b9755ee1594e42bfac4cee32f2d51,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Blur: 0.2
+    - _Contact_Foam_Edge_Thickness: 0
+    - _Contrast: 1
+    - _DeepFoam: 0.48
+    - _Distance: 1
+    - _Distortion_Strength: 0.015
+    - _Float: 0
+    - _Foam: 46.39
+    - _FoamAmount: 0
+    - _FoamColor_1: -33.9
+    - _FoamCutOff: 13
+    - _FoamDistortion: 4.45
+    - _FoamScale: 72.1
+    - _FoamSize: 5.2
+    - _FoamThreshold: 0.25
+    - _FoamWidth: -6.93
+    - _Foam_Distortion_Strength: 0
+    - _FomaSpeed: 42.7
+    - _Inner: 0
+    - _IntereactionRadius: 2.52
+    - _Mask_Foam_Edge_Smoothness: 0
+    - _Offset: -2.16
+    - _Outer: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RefracitonScale: 4.06
+    - _RefracitonSpeed: 7.99
+    - _RefracitonStrenght: 4.07
+    - _Speed: 0
+    - _TopDownRadius: 1.01
+    - _Transparent: 1
+    - _WaterSpeed: 3.57
+    - _Water_Depth: 10.1
+    - _Wave_Strength: 2
+    - _step: 0.4
+    - _step_1: 0.6
+    m_Colors:
+    - _BaseColor: {r: 0, g: 0.79607844, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.7960785, b: 1, a: 0.40784314}
+    - _Contact_Foam_Tiling: {r: 0, g: 0, b: 0, a: 0}
+    - _DeepColor: {r: 0, g: 0.45964932, b: 1, a: 0}
+    - _Distorted_UV: {r: 0, g: 0, b: 0, a: 0}
+    - _FoamColor: {r: 0.6117647, g: 0.9607844, b: 1, a: 0.99607843}
+    - _FoamColor_1: {r: 1, g: 0.096226394, b: 0.096226394, a: 1}
+    - _Foam_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskColor: {r: 0, g: 0.9622642, b: 0.890566, a: 1}
+    - _Mask_Foam_Tiling: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseScale: {r: 17.23, g: 3.2, b: 0, a: 0}
+    - _NoiseScale2: {r: 10, g: 10, b: 0, a: 0}
+    - _Player: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
