@@ -105,55 +105,59 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColCount: 8
+    - _ColCount: 6
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Density: 2.35
+    - _Density: 1.76
     - _Density_L1: 3.7
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DriftAmount: 0.6
+    - _DriftAmount: 1
     - _DriftFreq: 1.43
-    - _DropSize: 50
-    - _DropSize_1: 0.08
+    - _DropSize: 0.9
+    - _DropSize_1: 0.06
     - _DropSize_L1: 0.89
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FadeInEnd: 0.94
+    - _FadeInRange: 0.3
+    - _FadeOutRange: 1
     - _FadeOutStart: 0.97
     - _FadeSpeed: 145
     - _FadeSpeed_L1: 25.98
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _LifeDuration: 3
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Phase: 0.59
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RowCount: 7
-    - _SildeSpeed: 2.87
+    - _RowCount: 4
+    - _SildeSpeed: 2
     - _SlideDensity: 1
     - _SlideDropSize: 0.99
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SpawnChance: 0.04
+    - _SpawnChance: 1
+    - _SpawnChance_1: 1
     - _SpecularHighlights: 1
-    - _Speed: 0.01
+    - _Speed: 0.5
     - _SpeedFreq: -0.01
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TailTransparent: 0.3
-    - _TrailBend: 0.015
-    - _TrailLength: 0.9
-    - _TrailOpacity: 0.33
+    - _TrailBend: -0.87
+    - _TrailLength: 0.6
+    - _TrailOpacity: 0.2
     - _TrailWidth: 1.29
-    - _WobbleAmount: 0.01
+    - _WobbleAmount: 0.007
     - _WorkflowMode: 1
-    - _XRandRange: 1.01
+    - _XRandRange: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
