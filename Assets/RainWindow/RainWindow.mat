@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: RainWindow
   m_Shader: {fileID: -6465566751694194690, guid: eabce6b1e245d9d459a51e6da543341c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -115,7 +115,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DriftAmount: 1
     - _DriftFreq: 1.43
-    - _DropAmount: 6
+    - _DropAmount: 7
+    - _DropLifeTime: 1
     - _DropOpacity: 0.4
     - _DropSize: 0.9
     - _DropSize_1: 0.06
@@ -134,14 +135,16 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _LifeDuration: 3
+    - _LightDir: 0.47
     - _Metallic: 0
+    - _NormalStrength: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Phase: 0.59
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RowCount: 4
-    - _SildeSpeed: 1
+    - _SildeSpeed: 0.8
     - _SlideDensity: 1
     - _SlideDropSize: 0.99
     - _Smoothness: 0.5
@@ -168,5 +171,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DropTail: {r: 3, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightDir: {r: 0.3, g: -0.8, b: 0.5, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _WaterColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

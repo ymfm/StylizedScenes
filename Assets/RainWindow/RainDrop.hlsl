@@ -28,6 +28,7 @@ void RainLayer2_float(
     float DropSize_L3,
     float DropOpacity,
     float DropAmount,
+    float DropLifeTime,
     out float Out)
 {
     float2 gridUV = UV * float2(ColCount, RowCount);
@@ -48,9 +49,12 @@ void RainLayer2_float(
     float rand2 = h2.x;
     float rand3 = h2.y;
 
-    float dropX = clamp(0.5 + (rand2 - 0.5) * XRandRange, DropSize * 1.5, 1.0 - DropSize * 1.5);
+    // 无 wobble 的原始 X 位置（水珠用这个）
+    float baseDropX = clamp(0.5 + (rand2 - 0.5) * XRandRange, DropSize * 1.5, 1.0 - DropSize * 1.5);
+
+    float dropX = baseDropX;
     float dropY = lerp(1.0 - DropSize * 1.5, DropSize * 1.5, pow(ti, Accelerate));
-    
+
     float wobble = sin(ti * 6.28 * 2.0 + rand3 * 6.28) * WobbleAmount;
     dropX += wobble;
 
@@ -67,19 +71,17 @@ void RainLayer2_float(
     float trail = smoothstep(trailWidthFinal, 0, abs(trailDx)) * trailFade * TrailOpacity;
     trail *= step(0, trailY);
 
+    // ========== 拖尾残留水珠 ==========
     float trailDots = 0.0;
     float safeMargin = DropSize * 1.5;
     for (int i = 1; i <= DropAmount; i++)
     {
-
         float slotT = float(i) / (DropAmount + 1.0);
         float slotY = (1.0 - safeMargin) - slotT * (1.0 - 2.0 * safeMargin);
 
         float2 dotH = hash2(cellID + float2(lifeCount * 0.73 + float(i) * 13.7, float(i) * 7.1));
         float dotRandSize = 0.4 + dotH.x * 0.6;
         float dotRandX = (dotH.y - 0.5) * DropSize * 0.8;
-
-        float baseDropX = clamp(0.5 + (rand2 - 0.5) * XRandRange, DropSize * 1.5, 1.0 - DropSize * 1.5);
 
         float dotX = baseDropX + dotRandX;
         float dotRadius = DropSize * DropSize_L3 * dotRandSize;
@@ -88,15 +90,16 @@ void RainLayer2_float(
         float dotDist = length(dotDelta);
         float dotMask = smoothstep(dotRadius, dotRadius * 0.3, dotDist);
 
+        // 头部经过判定
         float hasPassed = step(dropY, slotY);
 
-        float passedAmount = saturate((slotY - dropY) / max(slotY, 0.01));
+        // 存活时间淡出（DropLifeTime 控制）
+        float passedAmount = saturate((slotY - dropY) / max(DropLifeTime, 0.01));
         float dotFade = hasPassed * (1.0 - passedAmount);
 
         trailDots += dotMask * dotFade;
     }
     trailDots = saturate(trailDots) * DropOpacity;
-
 
     float fadeIn  = smoothstep(1.0, 1.0 - FadeInRange, dropY);
     float fadeOut = smoothstep(0.0, FadeOutRange, dropY);
@@ -107,6 +110,7 @@ void RainLayer2_float(
     float spawnMask = spawnRand < SpawnChance ? 1.0 : 0.0;
     head *= spawnMask;
     trail *= spawnMask;
+    trailDots *= spawnMask;
 
     Out = saturate(head + trail + trailDots);
 }
