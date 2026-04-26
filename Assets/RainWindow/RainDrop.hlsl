@@ -25,6 +25,9 @@ void RainLayer2_float(
     float FadeInRange,
     float FadeOutRange,
     float SpawnChance,
+    float DropSize_L3,
+    float DropOpacity,
+    float DropAmount,
     out float Out)
 {
     float2 gridUV = UV * float2(ColCount, RowCount);
@@ -64,6 +67,37 @@ void RainLayer2_float(
     float trail = smoothstep(trailWidthFinal, 0, abs(trailDx)) * trailFade * TrailOpacity;
     trail *= step(0, trailY);
 
+    float trailDots = 0.0;
+    float safeMargin = DropSize * 1.5;
+    for (int i = 1; i <= DropAmount; i++)
+    {
+
+        float slotT = float(i) / (DropAmount + 1.0);
+        float slotY = (1.0 - safeMargin) - slotT * (1.0 - 2.0 * safeMargin);
+
+        float2 dotH = hash2(cellID + float2(lifeCount * 0.73 + float(i) * 13.7, float(i) * 7.1));
+        float dotRandSize = 0.4 + dotH.x * 0.6;
+        float dotRandX = (dotH.y - 0.5) * DropSize * 0.8;
+
+        float baseDropX = clamp(0.5 + (rand2 - 0.5) * XRandRange, DropSize * 1.5, 1.0 - DropSize * 1.5);
+
+        float dotX = baseDropX + dotRandX;
+        float dotRadius = DropSize * DropSize_L3 * dotRandSize;
+
+        float2 dotDelta = st - float2(dotX, slotY);
+        float dotDist = length(dotDelta);
+        float dotMask = smoothstep(dotRadius, dotRadius * 0.3, dotDist);
+
+        float hasPassed = step(dropY, slotY);
+
+        float passedAmount = saturate((slotY - dropY) / max(slotY, 0.01));
+        float dotFade = hasPassed * (1.0 - passedAmount);
+
+        trailDots += dotMask * dotFade;
+    }
+    trailDots = saturate(trailDots) * DropOpacity;
+
+
     float fadeIn  = smoothstep(1.0, 1.0 - FadeInRange, dropY);
     float fadeOut = smoothstep(0.0, FadeOutRange, dropY);
     float visibility = fadeIn * fadeOut;
@@ -74,7 +108,7 @@ void RainLayer2_float(
     head *= spawnMask;
     trail *= spawnMask;
 
-    Out = saturate(head + trail);
+    Out = saturate(head + trail + trailDots);
 }
 
 #endif

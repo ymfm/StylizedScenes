@@ -109,19 +109,23 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _Density: 1.76
+    - _Density_1: 0
     - _Density_L1: 3.7
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DriftAmount: 1
     - _DriftFreq: 1.43
+    - _DropAmount: 6
+    - _DropOpacity: 0.4
     - _DropSize: 0.9
     - _DropSize_1: 0.06
     - _DropSize_L1: 0.89
+    - _DropSize_L3: 0.8
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FadeInEnd: 0.94
-    - _FadeInRange: 0.3
+    - _FadeInRange: 0.4
     - _FadeOutRange: 1
     - _FadeOutStart: 0.97
     - _FadeSpeed: 145
@@ -137,7 +141,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RowCount: 4
-    - _SildeSpeed: 2
+    - _SildeSpeed: 1
     - _SlideDensity: 1
     - _SlideDropSize: 0.99
     - _Smoothness: 0.5
@@ -152,9 +156,9 @@ Material:
     - _Surface: 0
     - _TailTransparent: 0.3
     - _TrailBend: -0.87
-    - _TrailLength: 0.6
-    - _TrailOpacity: 0.2
-    - _TrailWidth: 1.29
+    - _TrailLength: 0.4
+    - _TrailOpacity: 0.99
+    - _TrailWidth: 1.03
     - _WobbleAmount: 0.007
     - _WorkflowMode: 1
     - _XRandRange: 1
