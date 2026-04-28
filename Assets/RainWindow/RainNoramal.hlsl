@@ -1,6 +1,15 @@
 #ifndef RAIN_LIGHTING_INCLUDED
 #define RAIN_LIGHTING_INCLUDED
 
+// 手动声明不透明纹理
+TEXTURE2D(_CameraOpaqueTexture);
+SAMPLER(sampler_CameraOpaqueTexture);
+
+float3 SampleSceneColor(float2 uv)
+{
+    return SAMPLE_TEXTURE2D(_CameraOpaqueTexture, sampler_CameraOpaqueTexture, uv).rgb;
+}
+
 float3 HeightToNormal(float mask, float2 uv, float strength)
 {
     float2 duv = fwidth(uv) + 1e-5;
@@ -22,29 +31,29 @@ void RainNormal_float(
     float  RimIntensity,
     float  HighlightPower,
     float  HighlightIntensity,
+    float  RefractionStrength,
+    float  Tint,
     out float3 Color,
     out float  Alpha)
 {
     float3 N = HeightToNormal(Mask, UV, NormalStrength);
 
+    float2 refractedUV = UV - N.xy * RefractionStrength;
+    float3 background = SampleSceneColor(refractedUV);
+
     float3 L = normalize(-LightDir);
-    float  NdotL = saturate(dot(N, L));
-
-    float rim = pow(1.0 - saturate(N.z), RimPower) * RimIntensity;
-
     float3 V = float3(0, 0, 1);
     float3 H = normalize(L + V);
     float  spec = pow(saturate(dot(N, H)), HighlightPower) * HighlightIntensity;
 
-    float3 brightWater = lerp(WaterColor, float3(1,1,1), 0.6);
-    float  shading = Ambient + NdotL * (1.0 - Ambient);
+    float edge = pow(1.0 - saturate(N.z), RimPower);
+    float darkEdge = saturate(1.0 - edge * RimIntensity);
+
+    float3 refracted = lerp(background, background * WaterColor, Tint);
+    refracted *= darkEdge;
     
-    float3 baseTint  = brightWater * shading;
-    float3 highlight = (rim + spec) * float3(1,1,1);
-
-    Color = baseTint + highlight;
-
-    Alpha = saturate(Mask + rim * 0.3);
+    Color = refracted + spec * float3(1,1,1);
+    Alpha = saturate(Mask);
 }
 
 #endif
