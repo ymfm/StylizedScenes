@@ -73,8 +73,8 @@ Material:
     - _Intersection_Foam_Fade: 16.74
     - _Intersection_Foam_Speed: 0.1
     - _Intersection_Foam_Tiling: 4.53
-    - _LightHardness: 15
-    - _LightSmooth: -0.05
+    - _LightHardness: 20.82
+    - _LightSmooth: -0.4
     - _NormalScale: 0.46
     - _NormalSpeed: 1
     - _NormalStrength: 1
@@ -100,11 +100,11 @@ Material:
     - _FoamOffset: {r: 1, g: 1, b: 0, a: 0}
     - _Foam_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Foam_Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _HorizonColor: {r: 0.98490566, g: 0.19883937, b: 0.58262146, a: 1}
+    - _HorizonColor: {r: 1, g: 0.5641509, b: 0.90552175, a: 1}
     - _Intersection_Foam_Color: {r: 1, g: 1, b: 1, a: 0.21568628}
     - _Intersection_Foam_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _Shallow_Color: {r: 0, g: 0.76140684, b: 1, a: 0.45490196}
-    - _SpecularColor: {r: 0.07924521, g: 0.0644428, b: 0.0644428, a: 1}
+    - _SpecularColor: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
     - _Step: {r: 0, g: 0.6039216, b: 0.97647065, a: 1}
     - _Steps: {r: 1, g: 1, b: 30.11, a: 1}
     - _Water_Color: {r: 0, g: 0.68235296, b: 0.854902, a: 0.24313726}
