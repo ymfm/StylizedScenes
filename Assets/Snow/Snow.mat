@@ -49,17 +49,17 @@ Material:
     - _Float: 3.99
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowAmount: 1.9
-    - _SnowBrightness: 0.77
+    - _SnowAmount: 0
+    - _SnowBrightness: 1
     - _SnowEdge: 0
-    - _SnowPower: 1
-    - _SnowScale: 100
+    - _SnowPower: 1.2
+    - _SnowScale: 69.1
     - _Strength: 0.62
     - _VertexOffset: 1.5
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _FootSamtp: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 1}
-    - _SnowColor: {r: 0.26942676, g: 0.2909415, b: 0.2981131, a: 0}
+    - _SnowColor: {r: 0.23412606, g: 0.32544956, b: 0.3660378, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7438719656844238667
 MonoBehaviour:

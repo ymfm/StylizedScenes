@@ -86,8 +86,6 @@ public class ThirdPersonController : MonoBehaviour
         finalMove.y = verticalVelocity;
 
         controller.Move(finalMove * Time.deltaTime);
-
-        // 注意：这里没有 transform.rotation 的修改，角色 transform 不会转
     }
 
     void UpdateCameraPosition()

@@ -67,15 +67,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MaxSnowAngle: 0.28
+    - _MaxSnowAngle: 1.49
     - _NoiseSmooth: 1
-    - _NoiseTilling: 1
+    - _NoiseTilling: 0.12
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoohtness: 0
-    - _SnowIntensity: 1
+    - _SnowIntensity: 1.08
     - _SnowSmoothness: 1
-    - _SnowTilling: 1.5
+    - _SnowTilling: 1.25
     - _Strenght: 1
     m_Colors:
     - _SnowColor: {r: 0.7867212, g: 0.8814636, b: 0.9245283, a: 0}
