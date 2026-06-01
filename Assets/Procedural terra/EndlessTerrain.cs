@@ -12,7 +12,7 @@ public class EndlessTerrain : MonoBehaviour
     private int chunkSize;
     private int chunkVisibleInViewDst;
     Dictionary<Vector2,TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2,TerrainChunk>();
-
+    List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
     void Start()
     {
         chunkSize = MapGenerate.mapChunkSize -1;
@@ -27,6 +27,13 @@ public class EndlessTerrain : MonoBehaviour
 
     void UpdateVisibleChunks()
     {
+        for(int i = 0; i < terrainChunksVisibleLastUpdate.Count; i ++)
+        {
+            terrainChunksVisibleLastUpdate[i].SetVisible(false);
+        }
+
+        terrainChunksVisibleLastUpdate.Clear();
+
         int currentChunkCoordX = Mathf.RoundToInt(viewerPosition.x/chunkSize);
         int currentChunkCoordY = Mathf.RoundToInt(viewerPosition.y/chunkSize);
 
@@ -39,9 +46,13 @@ public class EndlessTerrain : MonoBehaviour
                 if(terrainChunkDictionary.ContainsKey(viewedChunkCoord))
                 {
                     terrainChunkDictionary[viewedChunkCoord].UpdateTerrainChunk();
+                    if(terrainChunkDictionary[viewedChunkCoord].IsVisible())
+                    {
+                        terrainChunksVisibleLastUpdate.Add(terrainChunkDictionary[viewedChunkCoord]);
+                    }
                 }else
                 {
-                    terrainChunkDictionary.Add(viewedChunkCoord,new TerrainChunk(viewedChunkCoord,chunkSize));
+                    terrainChunkDictionary.Add(viewedChunkCoord,new TerrainChunk(viewedChunkCoord,chunkSize,transform));
                 }
             }
         }
@@ -52,7 +63,7 @@ public class EndlessTerrain : MonoBehaviour
         Vector2 position;
         GameObject meshObject;
         Bounds bounds;
-        public TerrainChunk(Vector2 coord,int size)
+        public TerrainChunk(Vector2 coord,int size,Transform parent)
         {
             position = coord * size;
             bounds = new Bounds(position,Vector2.one*size);
@@ -60,18 +71,22 @@ public class EndlessTerrain : MonoBehaviour
             meshObject = GameObject.CreatePrimitive(PrimitiveType.Plane);
             meshObject.transform.position = positionV3;
             meshObject.transform.localScale = Vector3.one*size/10f;
+            meshObject.transform.parent = parent;
             SetVisible(false);
         }
-
         public void UpdateTerrainChunk() {
-            float viewerDstFromNearestEdge =  bounds.SqrDistance(viewerPosition);
+            float viewerDstFromNearestEdge = Mathf.Sqrt(bounds.SqrDistance(viewerPosition));
             bool visible = viewerDstFromNearestEdge <= maxViewDst;
             SetVisible(visible);
         }
-
         public void SetVisible(bool visible)
         {
             meshObject.SetActive(visible);
+        }
+
+        public bool IsVisible()
+        {
+            return meshObject.activeSelf;
         }
 
     }
