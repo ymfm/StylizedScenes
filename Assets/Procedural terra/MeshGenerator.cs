@@ -12,10 +12,10 @@ public static class MeshGenerator
         int height = heightMap.GetLength(1);
         float topLeftX = (width-1)/-2f;
         float topLeftZ = (width-1)/-2f;
-
+        AnimationCurve heightCurve = new AnimationCurve (curve.keys);
         int meshSimplificationIncrement = (levelOfDetail == 0)?1:levelOfDetail * 2;
         int verticsePerline = (width-1)/meshSimplificationIncrement + 1;
-
+ 
         MeshData meshData = new MeshData(verticsePerline,verticsePerline);
         int vertexIndex = 0;
 
@@ -23,7 +23,8 @@ public static class MeshGenerator
         {
             for(int x = 0; x<width ;x+= meshSimplificationIncrement)
             {
-                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x,curve.Evaluate(heightMap[x,y])*heightMultiplier, topLeftZ + y);
+                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x,heightCurve.Evaluate(heightMap[x,y])*heightMultiplier, topLeftZ + y);
+
                 meshData.uvs[vertexIndex] = new Vector2(x/(float)width,y/(float)height);
                 if(x<width-1&&y<height-1)
                 {
@@ -31,6 +32,7 @@ public static class MeshGenerator
                     meshData.AddTriangle(vertexIndex+verticsePerline+1,vertexIndex,vertexIndex+1);
                 }
                 vertexIndex++;
+
             }
         }
         return meshData;

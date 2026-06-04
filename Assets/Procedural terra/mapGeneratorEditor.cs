@@ -10,17 +10,17 @@ public class mapGeneratorEditor : Editor
     public override void OnInspectorGUI()
     {
         MapGenerate mapGen = (MapGenerate)target;
-
+ 
         if(DrawDefaultInspector())
         {
             if(mapGen.autoUpdate)
             {
-                mapGen.GenerateMap();
+                mapGen.DrawMapInEditor();
             }
         }
         if(GUILayout.Button("Generate"))
         {
-            mapGen.GenerateMap();
+            mapGen.DrawMapInEditor();
         }
     }
 }
