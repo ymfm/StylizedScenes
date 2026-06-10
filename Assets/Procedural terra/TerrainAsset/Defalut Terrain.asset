@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e31c158452f9b4cbe48c860b0313ea, type: 3}
+  m_Name: Defalut Terrain
+  m_EditorClassIdentifier: 
+  autoUpdata: 1
+  uniformScale: 5
+  useFlatShading: 0
+  useFalloff: 0
+  meshHeightMultiplier: 50
+  meshHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.30237728
+      value: 0.037534714
+      inSlope: 0.3360319
+      outSlope: 0.3360319
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.26285988
+    - serializedVersion: 3
+      time: 0.60744226
+      value: 0.14612985
+      inSlope: 0.26417378
+      outSlope: 0.26417378
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.28188536
+    - serializedVersion: 3
+      time: 0.8258063
+      value: 0.3250392
+      inSlope: 2.1537552
+      outSlope: 2.1537552
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.91197866
+      value: 0.5155089
+      inSlope: 2.3904567
+      outSlope: 2.3904567
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.395199
+    - serializedVersion: 3
+      time: 1.0060425
+      value: 1.0174866
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
