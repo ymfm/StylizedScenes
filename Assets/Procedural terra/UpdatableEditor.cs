@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 
 [CustomEditor(typeof(UpdatableData),true)]
 public class UpdatableEditor : Editor
@@ -11,6 +12,7 @@ public class UpdatableEditor : Editor
         if(GUILayout.Button("Updata"))
         {
             data.NotifyOfUpdataValues();
+            EditorUtility.SetDirty(target);
         }
     }
 }

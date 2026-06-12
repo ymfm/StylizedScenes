@@ -12,12 +12,13 @@ public class UpdatableData : ScriptableObject
     {
         if (autoUpdata)
         {
-            NotifyOfUpdataValues();
+            UnityEditor.EditorApplication.update += NotifyOfUpdataValues;
         }
     }
 
     public void NotifyOfUpdataValues()
     {
+        UnityEditor.EditorApplication.update -= NotifyOfUpdataValues;
         if(OnValuesUpdata != null)
         {
             OnValuesUpdata();

@@ -46,6 +46,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	public void DrawMapInEditor() {
+		texData.UpdateMeshHeight(terrainMaterial, terrainData.minHeight, terrainData.maxHeight);
 		MapData mapData = GenerateMapData (Vector2.zero);
 
 		MapDisplay display = FindObjectOfType<MapDisplay> ();
@@ -89,6 +90,10 @@ public class MapGenerator : MonoBehaviour {
 		}
 	}
 
+	void Start() {
+		texData.ApplyToMaterial(terrainMaterial);
+		texData.UpdateMeshHeight(terrainMaterial, terrainData.minHeight, terrainData.maxHeight);
+	}
 	void Update() {
 		if (mapDataThreadInfoQueue.Count > 0) {
 			for (int i = 0; i < mapDataThreadInfoQueue.Count; i++) {
@@ -123,6 +128,8 @@ public class MapGenerator : MonoBehaviour {
 				}
 			}
 		}
+
+		//texData.UpdateMeshHeight(terrainMaterial,terrainData.minHeight,terrainData.maxHeight);
 
 		return new MapData (noiseMap);
 	}
