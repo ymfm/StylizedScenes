@@ -90,9 +90,10 @@ public class MapGenerator : MonoBehaviour {
 		}
 	}
 
-	void Start() {
+	void Awake() {
 		texData.ApplyToMaterial(terrainMaterial);
 		texData.UpdateMeshHeight(terrainMaterial, terrainData.minHeight, terrainData.maxHeight);
+
 	}
 	void Update() {
 		if (mapDataThreadInfoQueue.Count > 0) {
@@ -165,8 +166,6 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 }
-
-
 
 public struct MapData {
 	public readonly float[,] heightMap;

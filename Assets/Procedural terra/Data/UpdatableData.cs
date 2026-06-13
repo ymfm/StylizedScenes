@@ -7,7 +7,7 @@ public class UpdatableData : ScriptableObject
 {
     public event System.Action OnValuesUpdata;
     public bool autoUpdata;
-
+    #if UNITY_EDITOR
     protected virtual void OnValidate()
     {
         if (autoUpdata)
@@ -24,4 +24,5 @@ public class UpdatableData : ScriptableObject
             OnValuesUpdata();
         }
     }
+    #endif
 }
