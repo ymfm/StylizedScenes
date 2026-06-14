@@ -28,7 +28,7 @@ public class TerrainChunk {
 	MeshSettings meshSettings;
 	Transform viewer;
 
-	public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
+	public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material, Material waterMaterial, float waterLevel) {
 		this.coord = coord;
 		this.detailLevels = detailLevels;
 		this.colliderLODIndex = colliderLODIndex;
@@ -49,6 +49,20 @@ public class TerrainChunk {
 
 		meshObject.transform.position = new Vector3(position.x,0,position.y);
 		meshObject.transform.parent = parent;
+
+		// 每个地块生成一个与地块同尺寸的水面 plane
+		if (waterMaterial != null) {
+			GameObject water = GameObject.CreatePrimitive (PrimitiveType.Plane);
+			water.name = "Water";
+			Object.Destroy (water.GetComponent<Collider> ());
+			water.transform.parent = meshObject.transform;
+			water.transform.localPosition = new Vector3 (0, waterLevel, 0);
+			// Unity 的 Plane 原始尺寸是 10x10,缩放到地块大小
+			float waterScale = meshSettings.meshWorldSize / 10f;
+			water.transform.localScale = new Vector3 (waterScale, 1, waterScale);
+			water.GetComponent<MeshRenderer> ().sharedMaterial = waterMaterial;
+		}
+
 		SetVisible(false);
 
 		lodMeshes = new LODMesh[detailLevels.Length];
