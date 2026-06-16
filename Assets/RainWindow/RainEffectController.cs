@@ -16,7 +16,25 @@ public class RainController : MonoBehaviour
     
     void OnEnable()   => Apply();
     void OnValidate() => Apply();
-    
+
+    // 物体被禁用(离开下雨地块)时,强制关掉全屏滤镜,避免残留。
+    // rainEnabled 本身不变,下次启用时仍按它应用。
+    void OnDisable()
+    {
+        bool prev = rainEnabled;
+        rainEnabled = false;
+        Apply();
+        rainEnabled = prev;
+    }
+
+    // 运行时开关雨(进入/离开下雨地块时调用)
+    public void SetRain(bool on)
+    {
+        if (rainEnabled == on) return;
+        rainEnabled = on;
+        Apply();
+    }
+
     void Apply()
     {
         ApplyRendererFeature();
@@ -43,18 +61,9 @@ public class RainController : MonoBehaviour
     
     void ApplyVolumeOverrides()
     {
-        if (globalVolume == null || globalVolume.profile == null) return;
-        
-        // Depth of Field
-        if (globalVolume.profile.TryGet<DepthOfField>(out var dof))
-        {
-            dof.active = rainEnabled;
-        }
-        
-        // Bloom
-        if (globalVolume.profile.TryGet<Bloom>(out var bloom))
-        {
-            bloom.active = rainEnabled;
-        }
+        if (globalVolume == null) return;
+
+        // Toggle the whole Volume component on/off (controls all of its overrides at once)
+        globalVolume.enabled = rainEnabled;
     }
 }

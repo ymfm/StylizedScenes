@@ -137,12 +137,12 @@ Material:
     - _Intersection_Foam_Direction: 2.64
     - _Intersection_Foam_Fade: 0.45
     - _Intersection_Foam_Speed: 0.15
-    - _Intersection_Foam_Tiling: 10.31
+    - _Intersection_Foam_Tiling: 12.19
     - _LightHardness: 20.82
     - _LightSmooth: -0.4
     - _Metallic: 0
     - _NormalScale: 0.46
-    - _NormalSpeed: 0.2
+    - _NormalSpeed: -0.2
     - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
